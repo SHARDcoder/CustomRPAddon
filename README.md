@@ -1,5 +1,5 @@
 # CustomRPAddon
-An addon for @HyperiumClient which allows you to customise your playtime
+An addon for @HyperiumClient which allows you to customise your rich presence
 
 ## Download
 Releases
