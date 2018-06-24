@@ -23,9 +23,6 @@ public class CustomRPCommand implements BaseCommand {
     @Override
     public void onExecute(String[] args) throws CommandException {
         try {
-            if (args.length == 0) {
-                Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(getUsage(), false);
-            }
             if (args[0].equalsIgnoreCase("reset")) {
                 CustomRPUpdater.customRPMode = "addon";
                 Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fMode reset"), false);
