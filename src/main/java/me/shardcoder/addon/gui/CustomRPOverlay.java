@@ -17,7 +17,7 @@ public class CustomRPOverlay extends HyperiumOverlay {
             Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fMode reset"), false);
             CustomRPUpdater.callCustomRPUpdate();
         }));
-        this.getComponents().add(new OverlayToggle("Set ----- Preview", false, b -> {
+        this.getComponents().add(new OverlayToggle("Set ----- Preview", !buttonMode, b -> {
             buttonMode = !b;
         }));
         this.getComponents().add(new OverlayButton("eVowels", () -> {
