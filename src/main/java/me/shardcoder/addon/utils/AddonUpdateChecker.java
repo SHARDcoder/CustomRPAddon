@@ -6,14 +6,31 @@ import cc.hyperium.event.ServerJoinEvent;
 import cc.hyperium.event.SingleplayerJoinEvent;
 import cc.hyperium.internal.addons.AddonBootstrap;
 import cc.hyperium.utils.ChatColor;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.ChatStyle;
+import net.minecraft.util.IChatComponent;
 import org.apache.commons.io.IOUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.Iterator;
+import java.util.List;
 
 public class AddonUpdateChecker {
     static String updateVersion;
     static String localVersion;
+
+    public static String getLocalVersion() {
+        AddonBootstrap.INSTANCE.getAddonManifests().forEach(m -> {
+            if (m.getName().equalsIgnoreCase("CustomRP addon")) {
+                localVersion = m.getVersion();
+                localVersion = localVersion.substring(0, 5);
+            }
+        });
+
+        return localVersion;
+    }
 
     public static void getVersion() {
         try {
@@ -44,6 +61,8 @@ public class AddonUpdateChecker {
                     Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fNew version available!\n" +
                                     "&8[CustomRP] &fDownload at 'bit.ly/CustomRP'")
                             , false);
+                } else {
+                    System.out.println("[CustomRP] Version up-to-date. No update needed");
                 }
             }
         });

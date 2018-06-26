@@ -14,15 +14,17 @@ public class RichPresenceUpdater {
     public static void callCustomRPUpdate() {
         if (Config.customRPMode.equalsIgnoreCase("addon")) {
             RichPresence.Builder builder = new RichPresence.Builder();
+
             client.sendRichPresence(builder
                     .setSmallImage("compass")
                     .setLargeImage("hyperium", "Hyperium Client")
                     .setState("Playing a game")
-                    .setDetails("CustomRP Addon")
+                    .setDetails("CustomRP Addon v" + AddonUpdateChecker.getLocalVersion())
                     .setStartTimestamp(OffsetDateTime.now())
                     .build());
-        } else if (Config.customRPMode.equalsIgnoreCase("vewels")) {
+        } else if (Config.customRPMode.equalsIgnoreCase("eVowels")) {
             RichPresence.Builder builder = new RichPresence.Builder();
+
             String eIfiedUsername = Minecraft.getMinecraft().getSession().getUsername();
             eIfiedUsername = eIfiedUsername.replace('a', 'e');
             eIfiedUsername = eIfiedUsername.replace('i', 'e');
@@ -32,43 +34,48 @@ public class RichPresenceUpdater {
             eIfiedUsername = eIfiedUsername.replace('I', 'e');
             eIfiedUsername = eIfiedUsername.replace('O', 'e');
             eIfiedUsername = eIfiedUsername.replace('U', 'e');
+
             client.sendRichPresence(builder
                     .setSmallImage("compass")
                     .setLargeImage("hyperium", "Hyperium Client")
                     .setState("eGN: ".concat(eIfiedUsername))
-                    .setDetails("CestemRP edden")
+                    .setDetails("CestemRP edden v" + AddonUpdateChecker.getLocalVersion())
                     .setStartTimestamp(OffsetDateTime.now())
                     .build());
-        } else if (Config.customRPMode.equalsIgnoreCase("eee")) {
+        } else if (Config.customRPMode.equalsIgnoreCase("eAll")) {
             RichPresence.Builder builder = new RichPresence.Builder();
+
             String allEUsername = "";
             for (int x = 0; x < Minecraft.getMinecraft().getSession().getUsername().length();) {
                 allEUsername = allEUsername.concat("e");
                 x++;
             }
+
             client.sendRichPresence(builder
                     .setSmallImage("compass")
                     .setLargeImage("hyperium", "Hyperium Client")
                     .setState("eee: ".concat(allEUsername))
-                    .setDetails("eeeeeeee eeeee")
+                    .setDetails("eeeeeeee eeeee e" + AddonUpdateChecker.getLocalVersion())
                     .setStartTimestamp(OffsetDateTime.now())
                     .build());
         } else if (Config.customRPMode.equalsIgnoreCase("sellout")) {
             RichPresence.Builder builder = new RichPresence.Builder();
+
             client.sendRichPresence(builder
                     .setSmallImage("compass")
                     .setLargeImage("hyperium", "Hyperium Client")
-                    .setState("Subscribe to ".concat(Minecraft.getMinecraft().thePlayer.getName()))
-                    .setDetails("CustomRP Addon")
+                    .setState("Sub to ".concat(Minecraft.getMinecraft().getSession().getUsername()))
+                    .setDetails("CustomRP Addon v" + AddonUpdateChecker.getLocalVersion())
                     .setStartTimestamp(OffsetDateTime.now())
                     .build());
         } else if (Config.customRPMode.equalsIgnoreCase("bestCoder")) {
             RichPresence.Builder builder = new RichPresence.Builder();
+
             client.sendRichPresence(builder
                     .setSmallImage("compass")
                     .setLargeImage("hyperium", "Hyperium Client")
-                    .setState(Minecraft.getMinecraft().thePlayer.getName().concat(" best coder"))
-                    .setDetails("CustomRP Addon")
+                    .setState(Minecraft.getMinecraft().getSession().getUsername().concat(" best coder"))
+                    .setDetails("CustomRP Addon v" + AddonUpdateChecker.getLocalVersion())
                     .setStartTimestamp(OffsetDateTime.now())
                     .build());
         } else {
