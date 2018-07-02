@@ -12,7 +12,7 @@ public class RichPresenceUpdater {
     public static IPCClient client;
 
     public static void callCustomRPUpdate() {
-        if (Config.customRPMode.equalsIgnoreCase("addon")) {
+        if (Config.localMode.equalsIgnoreCase("addon")) {
             RichPresence.Builder builder = new RichPresence.Builder();
 
             client.sendRichPresence(builder
@@ -22,7 +22,7 @@ public class RichPresenceUpdater {
                     .setDetails("CustomRP Addon v" + AddonUpdateChecker.getLocalVersion())
                     .setStartTimestamp(OffsetDateTime.now())
                     .build());
-        } else if (Config.customRPMode.equalsIgnoreCase("eVowels")) {
+        } else if (Config.localMode.equalsIgnoreCase("eVowels")) {
             RichPresence.Builder builder = new RichPresence.Builder();
 
             String eIfiedUsername = Minecraft.getMinecraft().getSession().getUsername();
@@ -38,11 +38,11 @@ public class RichPresenceUpdater {
             client.sendRichPresence(builder
                     .setSmallImage("compass")
                     .setLargeImage("hyperium", "Hyperium Client")
-                    .setState("eGN: ".concat(eIfiedUsername))
+                    .setState("eGN: " + eIfiedUsername)
                     .setDetails("CestemRP edden v" + AddonUpdateChecker.getLocalVersion())
                     .setStartTimestamp(OffsetDateTime.now())
                     .build());
-        } else if (Config.customRPMode.equalsIgnoreCase("eAll")) {
+        } else if (Config.localMode.equalsIgnoreCase("eAll")) {
             RichPresence.Builder builder = new RichPresence.Builder();
 
             String allEUsername = "";
@@ -54,32 +54,74 @@ public class RichPresenceUpdater {
             client.sendRichPresence(builder
                     .setSmallImage("compass")
                     .setLargeImage("hyperium", "Hyperium Client")
-                    .setState("eee: ".concat(allEUsername))
+                    .setState("eee: " + allEUsername)
                     .setDetails("eeeeeeee eeeee e" + AddonUpdateChecker.getLocalVersion())
                     .setStartTimestamp(OffsetDateTime.now())
                     .build());
-        } else if (Config.customRPMode.equalsIgnoreCase("sellout")) {
+        } else if (Config.localMode.equalsIgnoreCase("sellout")) {
             RichPresence.Builder builder = new RichPresence.Builder();
 
             client.sendRichPresence(builder
                     .setSmallImage("compass")
                     .setLargeImage("hyperium", "Hyperium Client")
-                    .setState("Sub to ".concat(Minecraft.getMinecraft().getSession().getUsername()))
+                    .setState("Sub to " + Minecraft.getMinecraft().getSession().getUsername())
                     .setDetails("CustomRP Addon v" + AddonUpdateChecker.getLocalVersion())
                     .setStartTimestamp(OffsetDateTime.now())
                     .build());
-        } else if (Config.customRPMode.equalsIgnoreCase("bestCoder")) {
+        } else if (Config.localMode.equalsIgnoreCase("bestCoder")) {
             RichPresence.Builder builder = new RichPresence.Builder();
 
             client.sendRichPresence(builder
                     .setSmallImage("compass")
                     .setLargeImage("hyperium", "Hyperium Client")
-                    .setState(Minecraft.getMinecraft().getSession().getUsername().concat(" best coder"))
+                    .setState(Minecraft.getMinecraft().getSession().getUsername() + " best coder")
+                    .setDetails("CustomRP Addon v" + AddonUpdateChecker.getLocalVersion())
+                    .setStartTimestamp(OffsetDateTime.now())
+                    .build());
+        } else if (Config.localMode.equalsIgnoreCase("merch")) {
+            if (Minecraft.getMinecraft().getSession().getUsername().endsWith("s")) {
+                RichPresence.Builder builder = new RichPresence.Builder();
+
+                client.sendRichPresence(builder
+                        .setSmallImage("compass")
+                        .setLargeImage("hyperium", "Hyperium Client")
+                        .setState("Buy " + Minecraft.getMinecraft().getSession().getUsername() + "' merch")
+                        .setDetails("CustomRP Addon v" + AddonUpdateChecker.getLocalVersion())
+                        .setStartTimestamp(OffsetDateTime.now())
+                        .build());
+            } else {
+                RichPresence.Builder builder = new RichPresence.Builder();
+
+                client.sendRichPresence(builder
+                        .setSmallImage("compass")
+                        .setLargeImage("hyperium", "Hyperium Client")
+                        .setState("Buy " + Minecraft.getMinecraft().getSession().getUsername() + "'s merch")
+                        .setDetails("CustomRP Addon v" + AddonUpdateChecker.getLocalVersion())
+                        .setStartTimestamp(OffsetDateTime.now())
+                        .build());
+            }
+        } else if (Config.localMode.equalsIgnoreCase("respects")) {
+            RichPresence.Builder builder = new RichPresence.Builder();
+
+            client.sendRichPresence(builder
+                    .setSmallImage("compass")
+                    .setLargeImage("hyperium", "Hyperium Client")
+                    .setState("Press [F] to pay respects")
+                    .setDetails("CustomRP Addon v" + AddonUpdateChecker.getLocalVersion())
+                    .setStartTimestamp(OffsetDateTime.now())
+                    .build());
+        } else if (Config.localMode.equalsIgnoreCase("sleepy")) {
+            RichPresence.Builder builder = new RichPresence.Builder();
+
+            client.sendRichPresence(builder
+                    .setSmallImage("compass")
+                    .setLargeImage("hyperium", "Hyperium Client")
+                    .setState(Minecraft.getMinecraft().getSession().getUsername() + " sleepy")
                     .setDetails("CustomRP Addon v" + AddonUpdateChecker.getLocalVersion())
                     .setStartTimestamp(OffsetDateTime.now())
                     .build());
         } else {
-            Config.customRPMode = "addon";
+            Config.localMode = "addon";
             callCustomRPUpdate();
         }
     }
@@ -87,9 +129,7 @@ public class RichPresenceUpdater {
     public RichPresenceUpdater(IPCClient client) {
         this.client = client;
         if (Settings.DISCORD_RP) {
-            return;
+            callCustomRPUpdate();
         }
-
-        callCustomRPUpdate();
     }
 }

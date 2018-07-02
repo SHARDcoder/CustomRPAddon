@@ -7,25 +7,47 @@ import me.shardcoder.addon.config.Config;
 public class Mode {
     public static void set(String mode) {
         if (mode.equalsIgnoreCase("addon")) {
-            Config.customRPMode = "addon";
+            Config.localMode = "addon";
             Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fMode reset"), false);
             RichPresenceUpdater.callCustomRPUpdate();
+            Config.customRPMode = "addon";
         } else if (mode.equalsIgnoreCase("eVowels")) {
+            Config.localMode = "eVowels";
+            Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fMode set to '" + mode + "'"), false);
+            RichPresenceUpdater.callCustomRPUpdate();
             Config.customRPMode = "eVowels";
-            Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fMode set to '" + mode + "'"), false);
-            RichPresenceUpdater.callCustomRPUpdate();
         } else if (mode.equalsIgnoreCase("eAll")) {
+            Config.localMode = "eAll";
+            Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fMode set to '" + mode + "'"), false);
+            RichPresenceUpdater.callCustomRPUpdate();
             Config.customRPMode = "eAll";
-            Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fMode set to '" + mode + "'"), false);
-            RichPresenceUpdater.callCustomRPUpdate();
         } else if (mode.equalsIgnoreCase("sellout")) {
+            Config.localMode = "sellout";
+            Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fMode set to '" + mode + "'"), false);
+            RichPresenceUpdater.callCustomRPUpdate();
             Config.customRPMode = "sellout";
-            Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fMode set to '" + mode + "'"), false);
-            RichPresenceUpdater.callCustomRPUpdate();
         } else if (mode.equalsIgnoreCase("bestCoder")) {
-            Config.customRPMode = "bestCoder";
+            Config.localMode = "bestCoder";
             Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fMode set to '" + mode + "'"), false);
             RichPresenceUpdater.callCustomRPUpdate();
+            Config.customRPMode = "bestCoder";
+        } else if (mode.equalsIgnoreCase("merch")) {
+            Config.localMode = "merch";
+            Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fMode set to '" + mode + "'"), false);
+            RichPresenceUpdater.callCustomRPUpdate();
+            Config.customRPMode = "merch";
+        } else if (mode.equalsIgnoreCase("respects")) {
+            Config.localMode = "respects";
+            Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fMode set to '" + mode + "'"), false);
+            RichPresenceUpdater.callCustomRPUpdate();
+            Config.customRPMode = "respects";
+        } else if (mode.equalsIgnoreCase("sleepy")) {
+            Config.localMode = "sleepy";
+            Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fMode set to '" + mode + "'"), false);
+            RichPresenceUpdater.callCustomRPUpdate();
+            Config.customRPMode = "sleepy";
+        } else {
+            Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &f'" + mode + "' is not a valid mode"), false);
         }
     }
 
@@ -63,6 +85,27 @@ public class Mode {
                             "&cHyperium\n" +
                             "&bCustomRP Addon v[version]\n" +
                             "&b[IGN] best coder\n" +
+                            "&b[time]\n")
+                    , false);
+        } else if (mode.equalsIgnoreCase("merch")) {
+            Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fPreview of '" + mode + "'\n\n" +
+                            "&cHyperium\n" +
+                            "&bCustomRP Addon v[version]\n" +
+                            "&bBuy [IGN]'s merch\n" +
+                            "&b[time]\n")
+                    , false);
+        } else if (mode.equalsIgnoreCase("respects")) {
+            Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fPreview of '" + mode + "'\n\n" +
+                            "&cHyperium\n" +
+                            "&bCustomRP Addon v[version]\n" +
+                            "&bPress [F] to pay respects\n" +
+                            "&b[time]\n")
+                    , false);
+        } else if (mode.equalsIgnoreCase("sleepy")) {
+            Hyperium.INSTANCE.getHandlers().getGeneralChatHandler().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[CustomRP] &fPreview of '" + mode + "'\n\n" +
+                            "&cHyperium\n" +
+                            "&bCustomRP Addon v[version]\n" +
+                            "&b[IGN] sleepy\n" +
                             "&b[time]\n")
                     , false);
         }

@@ -33,17 +33,21 @@ public class CustomRP implements IAddon {
 
     @InvokeEvent(priority = Priority.HIGH)
     public void initHighPriority(InitializationEvent event) {
-        this.client = new IPCClient(412963310867054602L);
-        this.client.setListener(new IPCListener() {
-            @Override
-            public void onReady(IPCClient client) {
-                EventBus.INSTANCE.register(new RichPresenceUpdater(client));
+        if (!!Config.remoteDisable) {
+            this.client = new IPCClient(412963310867054602L);
+            this.client.setListener(new IPCListener() {
+                @Override
+                public void onReady(IPCClient client) {
+                    EventBus.INSTANCE.register(new RichPresenceUpdater(client));
+                }
+            });
+            try {
+                client.connect(DiscordBuild.ANY);
+            } catch (NoDiscordClientException e) {
+                Hyperium.LOGGER.warn("no discord clients found");
             }
-        });
-        try {
-            client.connect(DiscordBuild.ANY);
-        } catch (NoDiscordClientException e) {
-            Hyperium.LOGGER.warn("no discord clients found");
+        } else {
+            System.out.println("[CustomRP] Discord interface not loaded due to manual override");
         }
     }
 

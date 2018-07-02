@@ -16,7 +16,7 @@ public class Overlay extends HyperiumOverlay {
         this.getComponents().add(new OverlayButton("RESET", () -> {
             Mode.set("addon");
         }));
-        this.getComponents().add(new OverlayToggle("Set ----- Preview", !buttonMode, b -> {
+        this.getComponents().add(new OverlayToggle("Set ----- Preview", false, b -> {
             buttonMode = !b;
         }));
         this.getComponents().add(new OverlayButton("eVowels", () -> {
@@ -45,6 +45,20 @@ public class Overlay extends HyperiumOverlay {
                 Mode.set("bestCoder");
             } else {
                 Mode.preview("bestCoder");
+            }
+        }));
+        this.getComponents().add(new OverlayButton("merch", () -> {
+            if (buttonMode) {
+                Mode.set("merch");
+            } else {
+                Mode.preview("merch");
+            }
+        }));
+        this.getComponents().add(new OverlayButton("sleepy", () -> {
+            if (buttonMode) {
+                Mode.set("sleepy");
+            } else {
+                Mode.preview("sleepy");
             }
         }));
     }

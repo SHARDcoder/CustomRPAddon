@@ -3,10 +3,7 @@ package me.shardcoder.addon.commands;
 import cc.hyperium.Hyperium;
 import cc.hyperium.commands.BaseCommand;
 import cc.hyperium.commands.CommandException;
-import cc.hyperium.utils.ChatColor;
 import me.shardcoder.addon.utils.Mode;
-import me.shardcoder.addon.config.Config;
-import me.shardcoder.addon.utils.RichPresenceUpdater;
 
 import java.util.ArrayList;
 import java.util.Collections;

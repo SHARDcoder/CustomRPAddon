@@ -6,16 +6,10 @@ import cc.hyperium.event.ServerJoinEvent;
 import cc.hyperium.event.SingleplayerJoinEvent;
 import cc.hyperium.internal.addons.AddonBootstrap;
 import cc.hyperium.utils.ChatColor;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.ChatStyle;
-import net.minecraft.util.IChatComponent;
 import org.apache.commons.io.IOUtils;
-import org.jetbrains.annotations.NotNull;
 
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.Iterator;
-import java.util.List;
 
 public class AddonUpdateChecker {
     static String updateVersion;
