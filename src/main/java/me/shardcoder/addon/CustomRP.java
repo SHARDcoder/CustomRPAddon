@@ -7,7 +7,6 @@ import com.jagrosh.discordipc.IPCClient;
 import com.jagrosh.discordipc.IPCListener;
 import com.jagrosh.discordipc.entities.DiscordBuild;
 import com.jagrosh.discordipc.exceptions.NoDiscordClientException;
-import me.shardcoder.addon.commands.CommandCustomRichPresence;
 import me.shardcoder.addon.config.Config;
 import me.shardcoder.addon.utils.AddonUpdateChecker;
 import me.shardcoder.addon.utils.RichPresenceUpdater;
@@ -27,13 +26,12 @@ public class CustomRP implements IAddon {
 
     @InvokeEvent
     public void init(InitializationEvent event) {
-        Hyperium.INSTANCE.getHandlers().getHyperiumCommandHandler().registerCommand(new CommandCustomRichPresence());
         RichPresenceUpdater.callCustomRPUpdate();
     }
 
     @InvokeEvent(priority = Priority.HIGH)
     public void initHighPriority(InitializationEvent event) {
-        if (!!Config.remoteDisable) {
+        if (!Config.remoteDisable) {
             this.client = new IPCClient(412963310867054602L);
             this.client.setListener(new IPCListener() {
                 @Override
